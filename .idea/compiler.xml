@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="elasticSearch" />
+        <module name="springDateES" />
+        <module name="springboot_ssm" />
+        <module name="lucene" />
+        <module name="springboot_demo2" />
+        <module name="springboot_demo1" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="elasticSearch" target="1.5" />
+      <module name="elasticSearch_02" target="1.5" />
+      <module name="lucene" target="1.8" />
+      <module name="springboot_demo" target="1.5" />
+      <module name="springboot_demo1" target="1.5" />
+      <module name="springboot_demo2" target="1.8" />
+      <module name="springboot_ssm" target="1.8" />
+      <module name="springDateES" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springDateES" options="-parameters" />
+      <module name="springboot_demo1" options="" />
+      <module name="springboot_demo2" options="-parameters" />
+      <module name="springboot_ssm" options="-parameters" />
+    </option>
+  </component>
+</project>
