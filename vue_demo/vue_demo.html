@@ -1,12 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.js"></script>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        color: darkgray
+    }
+    .red{
+        background-color: red;
+    }
+    .blue{
+        background-color: blue;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>vue前端框架使用</title>
 </head>
 <body>
-<div>
-    <h2>{{name}},你就是个大帅比!</h2>
+<div id="app">
+    <h3>{{name}},你怎么穿的是品如的衣服...</h3><hr/><hr/>
+    <h3>已有{{num}}位官人觉得"{{name}}"の活儿最好!</h3><hr/><hr/>
+    <!--v-on-->
+    <button @click="add" value="认同">认同</button>
+    <button @click="reduce" value="不认同">不认同</button><hr/><hr/>
+    <!--v-text和v-html-->
+    v-text:<span v-text="hello"></span><br/>
+    v-html:<span v-html="hello"></span><hr/><hr/>
+    <!--v-model-->
+    <input type="checkbox" v-model="language" value="Java" />Java<br/>
+    <input type="checkbox" v-model="language" value="PHP" />PHP<br/>
+    <input type="checkbox" v-model="language" value="Swift" />Swift<br/>
+    <h3>
+        你选择了：{{language.join(',')}}
+    </h3><hr/><hr/>
+    <!--v-for:遍历数组-->
+    <ul v-if="display">
+        <li v-for="user,index in users" v-if="user.gender=='女'" style="background-color:pink;">
+            {{index+1}}--{{user.name}} : {{user.gender}} : {{user.age}}
+        </li>
+        <li v-else  style="background-color:deepskyblue">
+            {{index+1}}--{{user.name}} : {{user.gender}} : {{user.age}}
+        </li>
+    </ul>
+    <button @click="display=!display">你倒是点我啊</button><hr/><hr/>
+    <!--v-for:遍历对象-->
+    <ul>
+        <li v-for="(value,key,index) in user">
+            {{index+1}}--{{key}} : {{value}}
+        </li>
+    </ul><hr/>
+    <!--v-if:选择-->
+    <h1 v-if="show" style="color:red">
+        猴赛雷啊!
+    </h1>
+    <button @click="show=!show">点击进行切换</button><hr/><hr/>
+
+    <!--if-else if-else-->
+    <div v-if="type1 == 'A'">
+        A
+    </div>
+    <div v-else-if="type1 == 'B'">
+        B
+    </div>
+    <div v-else-if="type1 == 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div><hr/><hr/>
+    <button @click="color='red'">红</button>
+    <button @click="color='blue'">蓝</button>
+    <div :class="color">
+        点击按钮，背景会切换颜色哦
+    </div><hr/><hr/>
+    <button @click="boo=!boo">点击切换背景</button>
+    <div :class="{red:boo,blue:!boo}">
+        点击按钮，背景会切换颜色哦
+    </div><hr/><hr/>
+    <!--computed计算属性-->
+    <h3>您的生日是：{{birth}} </h3><hr/><hr/>
+    <!--watch监控-->
+    <input type="text" v-model="message"><hr/><hr/>
+    <!--深度监控-->
+    姓名：<input type="text" v-model="person.name"> <br>
+    年龄：<input type="text" v-model="person.age">
+    <button @click="person.age++">未成年怎么办?+++</button> <br>
+    <h3>
+        {{person.name}}今年{{person.age}}岁了...
+    </h3><hr/><hr/>
+    <counter></counter><hr/><hr/>
+    <counter></counter><hr/><hr/>
+    <counter></counter><hr/><hr/>
+    <counter></counter><hr/><hr/>
+    <counter></counter><hr/><hr/>
 </div>
+
+
 </body>
+<script type="text/javascript" >
+
+    //定义全局组件,两个参数,一个组件名称,一个组件参数
+    Vue.component("counter",{
+        template:"<button v-on:click=\"count++\">你点了我 {{ count }} 次，我记住了.</button>",
+        data(){
+            return{
+                count:0
+            }
+        }
+    })
+
+     var app = new Vue({    //声明vue实例
+        el: "#app",
+        data: {
+            name: "王旭",
+            num: 1595426,
+            hello:"<h3>狗打喷嚏,要下大雨</h3>",
+            language:[],
+            users:[
+                {name:'小S', gender:'女', age: 21},
+                {name:'CGX', gender:'男', age: 30},
+                {name:'大S', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ],
+            user:{
+                name:'柳岩', gender:'女', age: 21
+            },
+            show:true,
+            display:true,
+            type1:'A',
+            color:'red',
+            boo:true,
+            birthday:817765555555,
+            message:'',
+            person:{},
+        },
+        methods: {
+            add(){
+                this.num++;
+            },
+            reduce(){
+                this.num--;
+            }
+        },
+        /*watch:{
+            message(newVal,oldVal){
+                console.log(newVal,oldVal)
+            }
+        },*/
+        watch:{
+            person:{
+                deep:true,  //开启深度监控,可以监控到对象中属性的变化
+                handler(val){
+                    console.log(val.name+":"+val.age);
+                }
+            },
+            message(newVal,oldVal){
+                console.log(newVal,oldVal)
+            }
+        },
+        computed:{
+            birth(){  //计算属性本质上是一个方法,但是必须有返回值
+                const d=new Date(this.birthday);
+                return d.getFullYear()+"-"+d.getMonth()+"-"+d.getDay();
+            }
+        },
+        created() {
+
+        },
+        mounted() {
+
+        }
+    });
+</script>
 </html>

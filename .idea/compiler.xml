@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="elasticSearch" />
         <module name="springDateES" />
+        <module name="vue_springboot" />
         <module name="springboot_ssm" />
         <module name="vue_demo" />
         <module name="lucene" />
@@ -25,6 +26,7 @@
       <module name="springboot_ssm" target="1.8" />
       <module name="springDateES" target="1.8" />
       <module name="vue_demo" target="1.5" />
+      <module name="vue_springboot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -33,6 +35,7 @@
       <module name="springboot_demo1" options="" />
       <module name="springboot_demo2" options="-parameters" />
       <module name="springboot_ssm" options="-parameters" />
+      <module name="vue_springboot" options="-parameters" />
     </option>
   </component>
 </project>

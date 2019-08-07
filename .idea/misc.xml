@@ -2,6 +2,10 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/vue_demo" />
+    <file type="web" url="file://$PROJECT_DIR$/vue_springboot" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -13,6 +17,7 @@
         <option value="$PROJECT_DIR$/elasticSearch/pom.xml" />
         <option value="$PROJECT_DIR$/springDateES/pom.xml" />
         <option value="$PROJECT_DIR$/vue_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/vue_springboot/pom.xml" />
       </list>
     </option>
   </component>
