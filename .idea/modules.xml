@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/springboot_demo1/springboot_demo1.iml" filepath="$PROJECT_DIR$/springboot_demo1/springboot_demo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_demo2/springboot_demo2.iml" filepath="$PROJECT_DIR$/springboot_demo2/springboot_demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" filepath="$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vue_demo/vue_demo.iml" filepath="$PROJECT_DIR$/vue_demo/vue_demo.iml" />
     </modules>
   </component>
 </project>
