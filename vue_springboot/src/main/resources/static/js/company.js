@@ -8,7 +8,7 @@ var app=new Vue({ //创建Vue实例
         findAll(){
             axios.get('company').then(
                 function (response) {
-                    alert(JSON.stringify(response)); //将json对象转字符串 JSON.parse
+                    //alert(JSON.stringify(response)); //将json对象转字符串 JSON.parse
                     app.companyList=response.data;   //异步请求内无法使用this关键字
                 }
             )
@@ -58,6 +58,5 @@ var app=new Vue({ //创建Vue实例
     },
     created(){
         this.findAll(); //进入页面就进行查询页面
-        alert("加载了没有啊")
     },
 })
