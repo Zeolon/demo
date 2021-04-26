@@ -24,7 +24,7 @@
         <!--io工具包读取磁盘文件-->
         <dependency><groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>2.7</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
